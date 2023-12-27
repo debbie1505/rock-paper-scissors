@@ -15,12 +15,7 @@ function getComputerChoice() {
   }
 }
 
-let computerChoice = getComputerChoice();
-
 function playRound(playerSelection, computerSelection) {
-  let computerSelection = computerChoice;
-  let playerSelection = prompt("Choose one: Rock, Paper, or Scissors");
-  playerSelection = playerSelection.toLowerCase();
   //For ties
   if (playerSelection === computerSelection) {
     return "It's a tie! Play again";
@@ -36,20 +31,27 @@ function playRound(playerSelection, computerSelection) {
   } else if (
     (playerSelection === "rock" && computerSelection === "paper") ||
     (playerSelection === "paper" && computerSelection === "scissors") ||
-    (PlayerSelection === "scissors" && computerSelection === "rock")
+    (playerSelection === "scissors" && computerSelection === "rock")
   ) {
     return "computer";
   }
 }
 
+//Play the game five times and determine the winner
 function game() {
   let playerScore = 0;
   let computerScore = 0;
+
   for (let i = 0; i < 5; i++) {
-    playRound();
-    if (playRound() === "player") {
+    let computerSelection = getComputerChoice();
+    console.log(computerSelection);
+    let userChoice = prompt("Choose one: Rock, Paper, or Scissors");
+    let playerSelection = userChoice.toLowerCase();
+    let result = playRound(playerSelection, computerSelection);
+
+    if (result === "player") {
       playerScore++;
-    } else if (playRound() === "computer") {
+    } else if (result === "computer") {
       computerScore++;
     }
   }
@@ -62,4 +64,5 @@ function game() {
   }
 }
 
+//Call the game function outside of the loop
 game();
