@@ -41,3 +41,25 @@ function playRound(playerSelection, computerSelection) {
     return "computer";
   }
 }
+
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+  for (let i = 0; i < 5; i++) {
+    playRound();
+    if (playRound() === "player") {
+      playerScore++;
+    } else if (playRound() === "computer") {
+      computerScore++;
+    }
+  }
+  if (playerScore > computerScore) {
+    console.log("You win!");
+  } else if (playerScore < computerScore) {
+    console.log("You lost!");
+  } else {
+    console.log("Tie!");
+  }
+}
+
+game();
