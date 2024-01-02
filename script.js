@@ -1,10 +1,9 @@
-//Get the computer's choice
+// Get the computer's choice
 function getComputerChoice() {
-  //Generate a random number between 0 an 2
+  // Generate a random number between 0 and 2
   let randomNumber = Math.floor(Math.random() * 3);
 
-  //Assign 'Rock', 'Paper', or 'Scissors' based on the random number
-
+  // Assign 'Rock', 'Paper', or 'Scissors' based on the random number
   switch (randomNumber) {
     case 0:
       return "rock";
@@ -16,12 +15,12 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  //For ties
+  // For ties
   if (playerSelection === computerSelection) {
-    return "It's a tie! Play again";
+    return "tie";
   }
 
-  //Determine the winner
+  // Determine the winner
   if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
@@ -37,44 +36,46 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-/*Play the game five times and determine the winner
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
+// Initialize scores
+let playerScore = 0;
+let computerScore = 0;
 
-  for (let i = 0; i < 5; i++) {
-    let computerSelection = getComputerChoice();
-    console.log(computerSelection);
-    let userChoice = prompt("Choose one: Rock, Paper, or Scissors");
-    let playerSelection = userChoice.toLowerCase();
-    let result = playRound(playerSelection, computerSelection);
+// The UI
+// Add event listeners to the buttons
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
+const resultsDiv = document.getElementById("results");
 
-    if (result === "player") {
-      playerScore++;
-    } else if (result === "computer") {
-      computerScore++;
-    }
+// Function to play the game when a button is clicked
+function playGame(playerSelection) {
+  let computerSelection = getComputerChoice();
+  let result = playRound(playerSelection, computerSelection);
+
+  // Display the results in the resultsDiv
+  resultsDiv.textContent = `Player: ${playerScore} | Computer: ${computerScore} | Result: ${result}`;
+
+  // Update scores
+  if (result === "player") {
+    playerScore++;
+  } else if (result === "computer") {
+    computerScore++;
   }
-  if (playerScore > computerScore) {
-    console.log("You win!");
-  } else if (playerScore < computerScore) {
-    console.log("You lost!");
-  } else {
-    console.log("Tie!");
+
+  // Check if one player reached 5 points and announce the winner
+  if (playerScore === 5 || computerScore === 5) {
+    if (playerScore > computerScore) {
+      resultsDiv.textContent += "\nYou win the game!";
+    } else {
+      resultsDiv.textContent += "\nComputer wins the game!";
+    }
+
+    // Reset scores after the game ends
+    playerScore = 0;
+    computerScore = 0;
   }
 }
-*/
-
-//Call the game function outside of the loop
-game();
-
-//The UI
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
-
-let computerSelection = getComputerChoice();
-
-rock.addEventListener("click", playround("rock", computerSelection));
-paper.addEventListener("click", playround("paper", computerSelection));
-scissors.addEventListener("click", playround("scissors", computerSelection));
+// Set up event listeners once when the page loads
+rockButton.addEventListener("click", () => playGame("rock"));
+paperButton.addEventListener("click", () => playGame("paper"));
+scissorsButton.addEventListener("click", () => playGame("scissors"));
