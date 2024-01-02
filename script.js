@@ -37,7 +37,7 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-//Play the game five times and determine the winner
+/*Play the game five times and determine the winner
 function game() {
   let playerScore = 0;
   let computerScore = 0;
@@ -63,6 +63,18 @@ function game() {
     console.log("Tie!");
   }
 }
+*/
 
 //Call the game function outside of the loop
 game();
+
+//The UI
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+let computerSelection = getComputerChoice();
+
+rock.addEventListener("click", playround("rock", computerSelection));
+paper.addEventListener("click", playround("paper", computerSelection));
+scissors.addEventListener("click", playround("scissors", computerSelection));
