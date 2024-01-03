@@ -4,20 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+
+    <script
+      src="https://kit.fontawesome.com/37a7be37c8.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <main>
       <h1>Rock, Paper, Scissors!</h1>
       <div class="buttons">
-        <button id="rock" class="button">Rock</button>
-        <button id="paper" class="button">Paper</button>
-        <button id="scissors" class="button">Scissors</button>
+        <div class="option">
+          <button id="rock" class="button">
+            <i class="fa-solid fa-hand-fist fa-2xl"></i>
+          </button>
+          <p>Rock</p>
+        </div>
+        <div class="option">
+          <button id="paper" class="button">
+            <i class="fa-regular fa-hand fa-2xl"></i>
+          </button>
+          <p>Paper</p>
+        </div>
+        <div class="option">
+          <button id="scissors" class="button">
+            <i class="fa-regular fa-hand-scissors fa-2xl"></i>
+          </button>
+          <p>Scissors</p>
+        </div>
       </div>
 
       <div id="results">
-        Player: 0 | Computer: 0 | Results: Whoever wins each round
+        <span>Player: 0 </span> <span>|</span> <span>Computer: 0 </span>
+        <span>| </span> <span>Results: Whoever wins each round</span>
       </div>
     </main>
   </body>

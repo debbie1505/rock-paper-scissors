@@ -55,6 +55,9 @@ function playGame(playerSelection) {
   // Display the results in the resultsDiv
   resultsDiv.textContent = `Player: ${playerScore} | Computer: ${computerScore} | Result: ${result}`;
 
+  resultsDiv.style.fontSize = "30px";
+  resultsDiv.style.fontWeight = "100px";
+
   // Update scores
   if (result === "player") {
     playerScore++;
